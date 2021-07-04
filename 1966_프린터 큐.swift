@@ -23,10 +23,8 @@ for _ in 0..<t {
             }
         }
         else {  // 최대값 아님
-            importance.append(importance[0])
-            importance.removeFirst()
-            index.append(index[0])
-            index.removeFirst()
+            importance.append(importance.removeFirst())
+            index.append(index.removeFirst())
         }
     }
 }
