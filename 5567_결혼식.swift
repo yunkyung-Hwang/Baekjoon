@@ -22,7 +22,7 @@ for i in 0..<friends.count {
 for i in 0..<friends.count {
     if friends[i][0] != 1 && isFriend[friends[i][0] - 1] {  // 친구의 친구 찾기
         isFriendsFriend[friends[i][1] - 1] = true
-    } else if friends[i][0] != 1 && isFriend[friends[i][1] - 1] {   // !!양방향 확인!!
+    } else if friends[i][0] != 1 && isFriend[friends[i][1] - 1] {
         isFriendsFriend[friends[i][0] - 1] = true
     }   
 }
