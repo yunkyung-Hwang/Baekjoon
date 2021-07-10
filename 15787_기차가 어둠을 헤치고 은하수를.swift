@@ -25,20 +25,36 @@ for _ in 0..<m{
     }
 }
 
-var cnt = 0
-var isNewTrain = [Bool](repeating: true, count: n)
-for i in 0..<n-1 {
-    for j in i+1..<n {
-        if trains[i].elementsEqual(trains[j]) {
-            isNewTrain[j] = false
+var cnt: Set<String> = []
+
+for i in 0..<n {
+    var tmp = ""
+    for j in 0..<20 {
+        if trains[i][j] {
+            tmp += "1"
+        } else {
+            tmp += "0"
         }
     }
+    cnt.insert(tmp)
 }
+print(cnt.count)
 
-for i in isNewTrain {
-    if i {
-        cnt += 1
-    }
-}
+// 조합 : O(2^n) 터질만하군
+// var cnt = 0
+// var isNewTrain = [Bool](repeating: true, count: n)
+// for i in 0..<n-1 {
+//     for j in i+1..<n {
+//         if trains[i].elementsEqual(trains[j]) {
+//             isNewTrain[j] = false
+//         }
+//     }
+// }
 
-print(cnt)
+// for i in isNewTrain {
+//     if i {
+//         cnt += 1
+//     }
+// }
+
+// print(cnt)
