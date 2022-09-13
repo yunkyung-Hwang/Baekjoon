@@ -1,12 +1,12 @@
 import Foundation
 
-let people = Int(readLine()!)!
-var time = (readLine()!.split(separator: " ")).map{ Int($0)! }
-time = time.sorted()
+let n = Int(readLine()!)!
+var p = readLine()!.split(separator: " ").map { Int($0)! }
 var result = 0
 
-for i in 0..<people {
-    result += time[i] * (people-i)
+p.sort()
+for i in 0..<n {
+    result += p[i] * (n-i)
 }
 
 print(result)
