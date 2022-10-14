@@ -18,7 +18,7 @@ func insert(_ num: Int) {
     let size = heap.count - 1
     var pIdx = size / 2
     
-    while size > 1 {
+    while size > 1 && pIdx != 0 {
         let lIdx = pIdx * 2
         let rIdx = pIdx * 2 + 1
         var idx: Int?
@@ -46,7 +46,7 @@ func delete() -> Int {
     
     var pIdx = 1
     
-    while size > 1 {
+    while size > 1 && pIdx != 0 {
         let lIdx = pIdx * 2
         let rIdx = pIdx * 2 + 1
         var idx: Int?
