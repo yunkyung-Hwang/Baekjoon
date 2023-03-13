@@ -19,21 +19,27 @@ import Foundation
 // 단, 탐색 방향이 L->L이나 H->H은 되지만 L->H이나 H->L은 안됨 (Light, Heavy)
 // 부모쪽으로 쭉 이동하거나 자식 쪽으로 쭉 이동할 수는 있지만 부모의 자식으로 이동은 안됨
 
+// 자료형 
+// String 200ms
+// Int 48ms
+// Bool 20ms
+
+
+// --------------------------------Bool--------------------------------
 let n = Int(readLine()!)!
 let m = Int(readLine()!)!
 
-var graph = [[String]](repeating: [String](repeating: "-", count: n), count: n)
+var graph = [[Bool]](repeating: [Bool](repeating: false, count: n), count: n)
 for _ in 0..<m {
     let w = readLine()!.split(separator: " ").map { Int(String($0))! }
-    graph[w[0]-1][w[1]-1] = "H"
-    graph[w[1]-1][w[0]-1] = "L"
+    graph[w[0]-1][w[1]-1] = true
 }
 
 for k in 0..<n {
     for i in 0..<n {
         for j in 0..<n {
-            if graph[i][k] != "-" && graph[i][k] == graph[k][j] {
-                graph[i][j] = graph[i][k]
+            if graph[i][k] && graph[k][j] {
+                graph[i][j] = true
             }
         }
     }
@@ -41,6 +47,60 @@ for k in 0..<n {
 
 for i in 0..<n {
     var result = 0
-    for j in 0..<n { if graph[i][j] == "-" { result += 1 }}
+    for j in 0..<n { if !graph[i][j] && !graph[j][i] { result += 1 }}
     print(result - 1)
 }
+
+// --------------------------------String--------------------------------
+// let n = Int(readLine()!)!
+// let m = Int(readLine()!)!
+
+// var graph = [[String]](repeating: [String](repeating: "-", count: n), count: n)
+// for _ in 0..<m {
+//     let w = readLine()!.split(separator: " ").map { Int(String($0))! }
+//     graph[w[0]-1][w[1]-1] = "H"
+//     graph[w[1]-1][w[0]-1] = "L"
+// }
+
+// for k in 0..<n {
+//     for i in 0..<n {
+//         for j in 0..<n {
+//             if graph[i][k] != "-" && graph[i][k] == graph[k][j] {
+//                 graph[i][j] = graph[i][k]
+//             }
+//         }
+//     }
+// }
+
+// for i in 0..<n {
+//     var result = 0
+//     for j in 0..<n { if graph[i][j] == "-" { result += 1 }}
+//     print(result - 1)
+// }
+
+// --------------------------------Int--------------------------------
+// let n = Int(readLine()!)!
+// let m = Int(readLine()!)!
+
+// var graph = [[Int]](repeating: [Int](repeating: 0, count: n), count: n)
+// for _ in 0..<m {
+//     let w = readLine()!.split(separator: " ").map { Int(String($0))! }
+//     graph[w[0]-1][w[1]-1] = 1
+//     graph[w[1]-1][w[0]-1] = -1
+// }
+
+// for k in 0..<n {
+//     for i in 0..<n {
+//         for j in 0..<n {
+//             if graph[i][k] != 0 && graph[i][k] == graph[k][j] {
+//                 graph[i][j] = graph[i][k]
+//             }
+//         }
+//     }
+// }
+
+// for i in 0..<n {
+//     var result = 0
+//     for j in 0..<n { if graph[i][j] == 0 { result += 1 }}
+//     print(result - 1)
+// }
