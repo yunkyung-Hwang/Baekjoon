@@ -69,9 +69,64 @@ while s < ab.count && e >= 0 {
             cdCnt += 1
             e -= 1
         }
-        
+//        시간초과
+//        let abCnt = ab.lastIndex(of: ab[s])! - ab.firstIndex(of: ab[s])! + 1
+//        let cdCnt = cd.lastIndex(of: cd[e])! - cd.firstIndex(of: cd[e])! + 1
+//        s += abCnt
+//        e -= cdCnt
         result += abCnt * cdCnt
     }
 }
 
 print(result)
+
+// 딕셔너리 풀이 - 시간초과
+// let n = Int(readLine()!)!
+// var a = [Int](repeating: 0, count: n)
+// var b = [Int](repeating: 0, count: n)
+// var c = [Int](repeating: 0, count: n)
+// var d = [Int](repeating: 0, count: n)
+// var sums = [[Int]](repeating: [Int](repeating: 0, count: n*n), count: 2)
+// var result = 0
+
+// // O(n)
+// for i in 0..<n {
+//     let nums = readLine()!.split(separator: " ").map { Int(String($0))! }
+//     a[i] = nums[0]
+//     b[i] = nums[1]
+//     c[i] = nums[2]
+//     d[i] = nums[3]
+// }
+
+// // O(n^2)
+// var cnt = 0
+// for i in 0..<n {
+//     for j in 0..<n {
+//         sums[0][cnt] = a[i] + b[j]
+//         sums[1][cnt] = c[i] + d[j]
+//         cnt += 1
+//     }
+// }
+
+// // O(n^2)
+// sums[0].sort()
+// sums[1].sort()
+
+// var sum1 = [Int:Int]()
+// var sum2 = [Int:Int]()
+
+// // O(n^2)
+// for i in 0..<n*n {
+//     sum1[sums[0][i]] = sum1[sums[0][i]] != nil ? sum1[sums[0][i]]! + 1 : 1
+//     sum2[sums[1][i]] = sum2[sums[1][i]] != nil ? sum2[sums[1][i]]! + 1 : 1
+// }
+
+// // O(n^2)
+// for ab in sum1 {
+//     let tmp = ab.key * -1
+//     if let cnt = sum2[tmp] {
+//         result += cnt
+//     }
+// }
+
+// print(result)
