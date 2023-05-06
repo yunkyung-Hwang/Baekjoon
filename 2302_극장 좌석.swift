@@ -8,6 +8,10 @@ import Foundation
 // 단, VIP 회원들은 본인 좌석에만 앉을 수 있다.
 // 모든 좌석이 다 팔렸고 VIP 회원들의 좌석이 주어졌을 때 사람들이 좌석에 앉는 서로 다른 방법의 가짓수를 구해라
 
+// 인덱스 주의!!!!
+// 시작 기준 -> 마지막 처리 or 인덱스 
+// 끝 기준 -> 시작 인덱스 0..<m // m이 0일때 주의
+
 var n = Int(readLine()!)!
 let m = Int(readLine()!)!
 var vips = [Int](repeating: 0, count: m)
